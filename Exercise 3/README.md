@@ -1,104 +1,121 @@
 # Exercise 3 – Data Story: TV Energy Consumption
 
-## Overview
-
-In this exercise, you will develop a **data story** based on the **TV Energy Consumption dataset**. Using the website created in **Exercise 0.2**, you will extend your work to present a meaningful narrative supported by data visualisations.
-
-Your goal is to communicate insights from the dataset in a clear and engaging way through your **website and written explanation**.
-
-You must use the **Exercise 3 folder in your existing forked repository** and reuse the files created in **Exercise 0.2**.
-
----
-
 ## Data Story
 
 ### Audience
 
-The target audience for this visualisation includes:
+The target audience for this visualisation is consumers
+who are interested in purchasing a television.
 
-- Consumers interested in **energy-efficient televisions**
-- Policy makers and regulators interested in **energy consumption trends**
-- Researchers studying **energy efficiency in consumer electronics**
+### What does the audience want to know?
 
-These audiences are interested in understanding how **television energy consumption varies across models, sizes, and technologies**, and how these factors influence overall energy usage.
+The audience wants to understand how different television
+characteristics relate to energy consumption. This can help
+consumers consider energy use when comparing television
+models.
 
-### Story Overview
+### Data Question
 
-This visualisation explores patterns in **TV energy consumption** across different television models and specifications.
+The main question explored in this data story is:
 
-The goal is to help viewers understand:
-
-- How energy consumption varies between television models
-- The relationship between **screen size and power consumption**
-- How **energy efficiency ratings** impact energy usage
-- Trends that may help consumers choose more **energy-efficient televisions**
-
-The website presents these insights through visualisations and explanatory text that guide the viewer through the data.
-
----
+Does TV screen size affect energy consumption?
+How does screen technology affect energy consumption?
 
 ## About the Data
 
 ### Data Source
 
-The dataset used in this project contains information about **television models and their energy consumption characteristics**, including power usage, screen size, technology type, and efficiency ratings.
+The analysis uses the following CSV data files:
 
-The dataset was provided as part of the course materials.
+- `BrandCount.csv`
+- `tv_2026_02_15.csv`
+These files contain information about television products and their 
+characteristics, including screen size, screen technology and labelled 
+energy consumption.
+
+The TV dataset was provided for the COS30045 Data Visualisation exercises 
+and was used for the data exploration activities in Exercise 2.
 
 ### Data Processing
+The data was explored and processed using KNIME.
 
-Before creating visualisations, the dataset was processed to ensure it was suitable for analysis. This included:
+The following processing and exploration steps were completed:
 
-- Cleaning missing or inconsistent values
-- Selecting relevant attributes for visualisation
-- Organising the data into formats suitable for web visualisation
+1. The television data was imported into KNIME from the CSV file.
+2. Relevant columns were selected using the Column Filter node.
+3. Screen size was initially analysed in centimetres.
+4. Screen size was converted from centimetres to inches using an 
+   Expression node because television screen sizes are commonly discussed 
+   in inches.
+5. Screen size in inches was converted into a categorical variable so 
+   that it could be used in categorical visualisations.
+6. TVs were classified into three screen-size categories:
+   - Small: less than 43 inches
+   - Medium: 44–65 inches
+   - Large: greater than 66 inches
+7. GroupBy was used to calculate frequencies and summary values for 
+   categorical variables such as screen technology.
+8. Pivot was used to compare screen technology and screen-size categories.
+9. Mean labelled energy consumption was used to compare the energy 
+   consumption of different TV groups.
+10. Charts were created in KNIME to explore relationships between screen 
+    size, screen technology and energy consumption.
+
+These processing steps allowed the original product-level data to be 
+transformed into information that could be communicated through 
+visualisations.
 
 ### Privacy
 
-The dataset does not contain any **personal or sensitive information**. It focuses solely on product specifications and energy consumption data related to television devices.
+The dataset contains information about television products
+rather than individuals and does not contain personal
+identifying information.
 
 ### Accuracy and Limitations
+The visualisations describe patterns within the available dataset and 
+should not be interpreted as representing every television available 
+in the Australian market.
 
-While the dataset provides useful information about TV energy consumption, there are some limitations:
+There are several limitations to the dataset and analysis:
 
-- The dataset may not include **all available television models**
-- Some information may be **outdated or incomplete**
-- Energy consumption may vary depending on **real-world usage conditions**
+- The dataset contains a limited selection of television models.
+- Energy consumption can be affected by factors other than screen size, 
+  including screen technology and individual model characteristics.
+- The relationship shown in the visualisations does not necessarily mean 
+  that screen size alone causes higher energy consumption.
+- Some unusual screen sizes or frequency values were identified during 
+  the data exploration process. These values require careful 
+  interpretation because they may represent niche products, data 
+  classification issues or possible errors.
+- Grouping TVs into small, medium and large categories simplifies the 
+  original continuous screen-size data and may hide differences between 
+  individual models.
+- Average energy consumption represents a group and does not describe 
+  every TV within that group.
+  
+The results should therefore be used to identify general patterns rather 
+than to predict the energy consumption of a specific television model.
 
-These factors should be considered when interpreting the visualisations.
+
 
 ### Ethics
 
-When presenting data visualisations, it is important to ensure that the information is represented **accurately and responsibly**.
-
-This project follows ethical data visualisation practices by:
-
-- Avoiding misleading visual representations
-- Clearly explaining the context of the data
-- Presenting information transparently so viewers can interpret the results correctly
-
----
+The visualisations should present the data accurately and
+avoid misleading comparisons. Energy consumption should not
+be attributed to screen size alone because other television
+characteristics may also influence energy use.
 
 ## AI Declaration
 
-Artificial Intelligence (AI) tools may have been used to assist with aspects of this assignment, such as:
+Generative AI was used as a support tool during the development of this 
+exercise.
 
-- Generating example code
-- Improving code structure
-- Assisting with documentation writing
+AI was used to help with:
+- organising and structuring the README content;
+- improving the wording and clarity of explanations; and
+- discussing possible approaches to presenting the data story.
 
-All AI-generated assistance was reviewed, modified where necessary, and integrated responsibly into the project.
-
----
-
-## Website Storytelling
-
-The website has been updated to communicate a **data-driven story** based on the TV energy consumption dataset.
-
-The website includes:
-
-- Visualisations that present key insights from the dataset
-- Text explanations that help readers understand the meaning of the visualisations
-- Context that connects the data to real-world implications
-
-The aim is to guide the viewer through the data in a way that is **informative, engaging, and easy to understand**.
+The data processing and exploration were completed using KNIME. The 
+visualisations and data interpretations were reviewed by the student, 
+and the student is responsible for understanding and explaining the 
+final work.
