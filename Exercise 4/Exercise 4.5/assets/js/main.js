@@ -13,13 +13,13 @@ svg
     .attr("fill", "blue");
 
 d3.csv("assets/data/BrandCount.csv", d => {
- return {
+return {
     brand: d.Brand_Reg,
     count: +d["Count(SoldIn)"]
 };
 
 }).then(data => {
-
+    
     console.log(data);
     console.log(data.length);
     console.log(d3.max(data, d => d.count));
@@ -30,3 +30,20 @@ d3.csv("assets/data/BrandCount.csv", d => {
 
 });
 
+const drawBarChart = data => {
+
+    const barHeight = 20;
+    const barSpacing = 5;
+
+    svg
+        .selectAll("rect")
+        .data(data)
+        .join("rect")
+        .attr("class", "bar")
+        .attr("x", 0)
+        .attr("y", (d, i) => i * (barHeight + barSpacing))
+        .attr("width", d => d.count)
+        .attr("height", barHeight)
+        .attr("fill", "steelblue");
+
+};
