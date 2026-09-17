@@ -12,10 +12,10 @@ svg
     .attr("height", 16)
     .attr("fill", "blue");
 
-d3.csv("assets/data/BrandCount.csv", d => {
+d3.csv("assets/data/tvBrandCount.csv", d => {
  return {
-    brand: d.Brand_Reg,
-    count: +d["Count(SoldIn)"]
+    brand: d.brand,
+    count: +d.count
 };
 
 }).then(data => {

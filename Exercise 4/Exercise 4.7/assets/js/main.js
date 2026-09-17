@@ -6,7 +6,7 @@ const svg = d3.select(".responsive-svg-container")
 
 
 
-d3.csv("assets/data/BrandCount.csv", d => {
+d3.csv("assets/data/tvBrandCount.csv", d => {
 return {
     brand: d.Brand_Reg,
     count: +d["Count(SoldIn)"]
