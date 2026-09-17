@@ -96,7 +96,7 @@ Exercise 4.6/
     ├── css/
     │   └── style.css
     ├── data/
-    │   └── BrandCount.csv
+    │   └── tvBrandCount.csv
     ├── img/
     │   └── PowerIcon.png
     └── js/

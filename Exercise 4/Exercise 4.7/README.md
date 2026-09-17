@@ -1,93 +1,111 @@
-# Exercise 4.6
+# Exercise 4.7: Adding Labels
 
 ## Introduction
 
-This exercise builds on Exercise 4.5 by using D3 scales to make the bar chart adaptable to the available SVG size. Instead of using the raw data values directly as pixel dimensions, linear and band scales are used to calculate the size and position of the bars.
+This exercise builds on Exercise 4.6 by adding labels and numerical values to the D3 bar chart. The labels make the visualisation easier to understand by showing the television brand and the corresponding number of televisions sold for each bar.
 
 ## Aim
 
-The aim of this exercise is to make the chart adaptable to different SVG sizes.
+The aim of this exercise is to add labels to the bar chart.
 
 ## Purpose
 
-In Exercise 4.5, the `count` value was directly used to determine the width of each bar. This could cause bars to extend beyond the available SVG width when the data values were larger than the SVG dimensions.
+A bar chart without labels can be difficult to interpret. In this exercise, text labels were added to identify each television brand and display its corresponding sales count.
 
-D3 scales were introduced to convert the data values into suitable positions and dimensions within the SVG.
+A group (`<g>`) container was also introduced so that the brand label, bar, and count value could be positioned together.
 
-Two types of scales were used:
+## Step 1: Making Room for Labels
 
-* `d3.scaleLinear()` for the numerical TV sales count.
-* `d3.scaleBand()` for the categorical television brand data.
+Space was created on the left side of the chart for the brand labels.
 
-## Step 1: Linear Scale
+The x-position of the bars was changed from `0` to `100`:
 
-A linear scale was created for the TV count data:
-
-```javascript
-const xScale = d3.scaleLinear()
-    .domain([0, 1200])
-    .range([0, 400]);
+```javascript id="7m1b7u"
+.attr("x", 100)
 ```
 
-The domain represents the range of the original count values, while the range represents the available pixel width for the bars.
+This provides approximately 100 pixels of space for the brand names.
 
-The bar width was then changed from using the raw count:
+## Step 2: Creating a Group Container
 
-```javascript
-.attr("width", d => d.count)
+A group container was created for each data item:
+
+```javascript id="q0j8y2"
+const barAndLabel = svg
+    .selectAll("g")
+    .data(data)
+    .join("g")
+    .attr("transform", d => `translate(0, ${yScale(d.brand)})`);
 ```
 
-to using the linear scale:
+The `<g>` element allows the bar and its associated labels to move together according to the `yScale`.
 
-```javascript
-.attr("width", d => xScale(d.count))
+## Step 3: Adding the Rectangles
+
+The rectangles were added back inside each group:
+
+```javascript id="p3s6h1"
+barAndLabel
+    .append("rect")
+    .attr("class", "bar")
+    .attr("x", 100)
+    .attr("y", 0)
+    .attr("width", d => xScale(d.count))
+    .attr("height", yScale.bandwidth())
+    .attr("fill", "steelblue");
 ```
 
-This allows the bars to fit within the available SVG width.
+The `y` value of the rectangle is set to `0` because the group itself is already positioned using the `yScale`.
 
-## Step 2: Band Scale
+## Step 4: Adding Brand Labels
 
-A band scale was created for the television brand categories:
+Text elements were added to display the television brand names:
 
-```javascript
-const yScale = d3.scaleBand()
-    .domain(data.map(d => d.brand))
-    .range([0, 1600])
-    .padding(0.1);
+```javascript id="h8t4y6"
+barAndLabel
+    .append("text")
+    .text(d => d.brand)
+    .attr("x", 90)
+    .attr("y", 15)
+    .attr("text-anchor", "end")
+    .style("font-size", "13px");
 ```
 
-The `domain` contains the television brand names from the dataset, while the `range` determines the available vertical space.
+The `text-anchor` attribute was set to `end` so that the brand names are right-aligned near the bars.
 
-The band scale was used to calculate the vertical position of each bar:
+## Step 5: Adding Count Values
 
-```javascript
-.attr("y", d => yScale(d.brand))
+The exact sales count was added at the end of each bar:
+
+```javascript id="x0k4j9"
+barAndLabel
+    .append("text")
+    .text(d => d.count)
+    .attr("x", d => 100 + xScale(d.count) + 5)
+    .attr("y", 15)
+    .style("font-size", "13px");
 ```
 
-The height of each bar was also calculated using:
-
-```javascript
-.attr("height", yScale.bandwidth())
-```
-
-The `padding(0.1)` adds spacing between the bars.
+The x-position is calculated using the scaled bar width so that the count appears just after the end of the corresponding bar.
 
 ## Result
 
-The chart now uses scales to adapt the bar widths, positions, and heights to the SVG dimensions.
+The completed chart now displays:
 
-The `xScale` ensures that the numerical count values are converted into suitable bar widths, while the `yScale` distributes the television brands vertically and provides appropriate spacing between the bars.
+* The television brand name.
+* A horizontal bar representing the number of televisions sold.
+* The exact numerical count at the end of each bar.
 
-The chart is now more adaptable than the chart created in Exercise 4.5.
+The use of `<g>` elements keeps each brand label, bar, and count value together. The chart also continues to use the `xScale` and `yScale` created in Exercise 4.6.
 
-Labels have not yet been added because they are introduced in the following exercise.
+This makes the chart easier to read and provides more useful information to the user.
 
 ## Files
 
 The main files used for this exercise are:
 
-```text
-Exercise 4.6/
+```text id="j8j3x0"
+Exercise 4.7/
 ├── index.html
 ├── about.html
 ├── televisions.html
@@ -103,10 +121,22 @@ Exercise 4.6/
         ├── main.js
         └── script.js
 ```
+
+## Conclusion
+
+Exercise 4.7 completes the basic D3 bar chart by adding meaningful labels and values. The exercise demonstrates how SVG groups, text elements, and D3 data binding can be combined with scales to create a clearer and more informative visualisation.
+
+The completed chart can now be integrated into a webpage and used as a starting point for creating bar charts from other datasets.
+
 ## AI Declaration
 
-AI tools were used to support my learning and understanding during this exercise. AI assistance was used to explain D3 scaling concepts, including `d3.scaleLinear()`, `d3.scaleBand()`, domains, ranges, bandwidth, and padding.
+AI tools were used to support my learning and understanding during this exercise. AI assistance was used to explain how to add SVG text elements, create `<g>` group containers, position labels, and use the existing `xScale` and `yScale` from Exercise 4.6.
 
-AI assistance was also used to help understand how to modify the bar chart from Exercise 4.5 so that the bar widths, positions, and heights were calculated using D3 scales.
+AI assistance was also used to help understand the purpose of attributes such as `text-anchor`, `transform`, `x`, and `y`, and how to position the brand names and count values relative to the bars.
 
-I reviewed and tested the code myself in the browser, checked the generated SVG elements using the browser Developer Tools, and verified that the chart and data were displayed correctly. I made sure that I understood the final implementation before submitting the exercise.
+I reviewed and tested the code myself in the browser, checked the generated SVG elements using the browser Developer Tools, and verified that the labels, bars, and numerical values were displayed correctly. I made sure that I understood the final implementation before submitting the exercise.
+
+
+## Final Website
+http://127.0.0.1:5500/Exercise%204/Exercise%204.7/index.html
+
