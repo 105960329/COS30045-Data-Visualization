@@ -1,53 +1,111 @@
-# Exercise 5 – Multi-Chart Webpage
+# Exercise 5 – D3 Data Visualisation
 
-## Aim
-Create a variety of different chart types using **D3.js**.
+## COS30045 – Data Visualisation
 
-## Purpose
-In previous exercises, we created simple charts such as a horizontal bar chart. In this exercise, you will extend your skills by building multiple chart types and presenting them on a webpage.
+This exercise explores different chart types using D3.js. The visualisations are added to the Energy Consumption website developed in the earlier exercises.
 
-This activity focuses on using **D3 to visualise different types of data** and understanding when different charts are appropriate.
+The exercise includes three different visualisations:
 
-## Charts to Create
+- Exercise 5.1 – Vertical Bar Chart
+- Exercise 5.2 – Scatter Plot and Line Chart
+- Exercise 5.3 – Donut Chart
 
-Using the provided **TV energy consumption dataset** (or your own dataset), your webpage must include the following chart types:
 
-- **Scatter Plot**  
-  Energy consumption vs star rating.
+## Exercise 5.1 – Vertical Bar Chart
 
-- **Donut Chart**  
-  Energy consumption for different screen technologies across all TVs combined.
+A vertical bar chart was created to compare the average energy consumption of different TV screen technologies for 55-inch televisions.
 
-- **Bar Chart**  
-  Energy consumption for different screen technologies for **55-inch TVs only**.
+The chart includes:
 
-- **Line Chart**  
-  Spot power prices from **1998 to 2024** (either plot the average or include a line for each state).
+- A categorical x-axis for TV screen types
+- A numerical y-axis for average energy consumption (kWh/year)
+- Scaled x and y axes
+- Axis labels
+- Sorted bars from highest to lowest energy consumption
+- Value labels above each bar
 
-You may use the **provided datasets** or your **own dataset**, but your webpage must include **one example of each chart type**.
+The chart uses `d3.scaleBand()` for the categorical x-axis and `d3.scaleLinear()` for the numerical y-axis.
 
-## Preparation
 
-Before starting this exercise, it is recommended that you:
+## Exercise 5.2 – Scatter Plot and Line Chart
 
-- Review this week's **lecture slides**
-- Review **Chapter 4 and Chapter 5 of Dufour and Meeks (2024)**
+A scatter plot and line chart were created to show changes in the average Australian electricity spot price between 1998 and 2024.
 
-## Instructions
+The chart includes:
 
-Use the **forked repository that you created earlier for this unit**.
+- Year on the x-axis
+- Average electricity spot price on the y-axis
+- Scatter plot points for each year
+- A line connecting the data points
+- X and y-axis labels
 
-1. Open your existing **forked repository**.
-2. Navigate to the **Exercise 5 folder**.
-3. Add your code and files for this exercise inside that folder.
-4. Build a webpage that displays the required charts using **D3.js**.
-5. Commit and push your changes regularly to your GitHub repository.
+Both axes use `d3.scaleLinear()` because year and electricity price are continuous numerical values.
 
-## Submission
+`d3.extent()` is used to determine the minimum and maximum years in the dataset automatically.
 
-Your **forked repository** will serve as your submission.
+A D3 line generator (`d3.line()`) is used to generate the path connecting the data points.
 
-Ensure that:
-- All Exercise 5 files are inside the **Exercise 5 folder**
-- Your code is pushed to GitHub
-- Your repository link is submitted through the submission system.
+
+## Exercise 5.3 – Donut Chart
+
+A donut chart was created to display the proportion of small, medium, and large TV models in the dataset.
+
+The chart uses:
+
+- `d3.scaleOrdinal()` to assign colours to the TV size categories
+- `d3.pie()` to calculate the angles of each segment based on the TV count
+- `d3.arc()` to generate the donut segments
+- An inner radius to create the donut shape
+- Labels positioned using `arcGenerator.centroid()`
+
+Padding and rounded corners were also applied to visually separate the donut segments.
+
+
+## Project Structure
+
+```text
+Exercise 5/
+│
+├── index.html
+├── televisions.html
+├── about.html
+├── README.md
+│
+└── assets/
+    ├── css/
+    │   └── style.css
+    │
+    ├── data/
+    │   ├── Data_exercise 5.1.csv
+    │   ├── ARE_Spot_Prices.csv
+    │   └── Data_exercise 5.3.csv
+    │
+    ├── img/
+    │   └── PowerIcon.png
+    │
+    └── js/
+        ├── script.js
+        ├── bar-chart.js
+        ├── line-chart.js
+        └── donut-chart.js
+
+Technologies Used
+HTML5
+CSS3
+JavaScript
+D3.js
+Visual Studio Code
+Live Server
+AI Declaration
+
+Generative AI (ChatGPT) was used as a learning and development aid for this exercise.
+
+AI assistance was used to:
+
+Explain D3.js concepts and syntax
+Explain the use of scales, axes, d3.extent(), d3.line(), d3.pie(), and d3.arc()
+Provide guidance on structuring the JavaScript code for the visualisations
+Assist with debugging and checking the implementation against the exercise requirements
+Suggest code improvements and styling for the charts
+
+The exercise requirements, datasets, and overall implementation were based on the COS30045 Exercise 5 materials. The generated suggestions were reviewed, tested, and adapted during development, and I verified the visualisations by running them locally.

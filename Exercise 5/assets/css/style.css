@@ -142,3 +142,19 @@ footer p {
     font-weight: bold;
     fill: #1f2933;
 }
+
+.point {
+    fill: #123c4a;
+}
+
+.line {
+    fill: none;
+    stroke: #4aa3a2;
+    stroke-width: 2;
+}
+
+.donut-label {
+    font-size: 13px;
+    font-weight: bold;
+    fill: white;
+}
