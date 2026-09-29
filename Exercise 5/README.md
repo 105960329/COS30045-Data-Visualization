@@ -109,3 +109,7 @@ Assist with debugging and checking the implementation against the exercise requi
 Suggest code improvements and styling for the charts
 
 The exercise requirements, datasets, and overall implementation were based on the COS30045 Exercise 5 materials. The generated suggestions were reviewed, tested, and adapted during development, and I verified the visualisations by running them locally.
+
+## Mercury Link
+
+https://mercury.swin.edu.au/cos30045/s105960329/Exercise%205/index.html

@@ -119,3 +119,6 @@ The data processing and exploration were completed using KNIME. The
 visualisations and data interpretations were reviewed by the student, 
 and the student is responsible for understanding and explaining the 
 final work.
+
+## Mercury Link
+https://mercury.swin.edu.au/cos30045/s105960329/Exercise%203/index.html
