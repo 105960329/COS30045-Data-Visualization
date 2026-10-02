@@ -1,0 +1,23 @@
+/* Visualisation styling */
+
+svg {
+    background-color: #f4f8f9;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Histogram bars */
+.bar {
+    fill: #4aa3a2;
+}
+
+/* Axis styling */
+.axis path,
+.axis line {
+    stroke: #1f2933;
+}
+
+.axis text {
+    fill: #1f2933;
+    font-size: 12px;
+}
