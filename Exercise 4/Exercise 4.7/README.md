@@ -136,4 +136,5 @@ AI assistance was also used to help understand the purpose of attributes such as
 
 I reviewed and tested the code myself in the browser, checked the generated SVG elements using the browser Developer Tools, and verified that the labels, bars, and numerical values were displayed correctly. I made sure that I understood the final implementation before submitting the exercise.
 
-
+## Mercury link
+https://mercury.swin.edu.au/cos30045/s105960329/Exercise%204/Exercise%204.7/
