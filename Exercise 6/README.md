@@ -126,3 +126,6 @@ AI assistance was used to:
 - suggest CSS styling and webpage structure; and
 - assist with preparing documentation for the exercise.
 The generated suggestions were reviewed, tested, and modified during implementation to ensure that the visualisations worked correctly with the supplied dataset.
+
+## Mercury Link
+https://mercury.swin.edu.au/cos30045/s105960329/Exercise%206/televisions.html
