@@ -97,3 +97,6 @@ AI was used to:
 * Help structure and improve the README documentation.
 
 The SVG code was reviewed, tested, and customised as part of completing the exercise. I remain responsible for understanding the code and the final work submitted.
+
+## Mercury Link
+https://mercury.swin.edu.au/cos30045/s105960329/Exercise%204/Exercise%204.1/drawsvg.html
