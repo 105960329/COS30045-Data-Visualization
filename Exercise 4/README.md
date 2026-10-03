@@ -21,5 +21,8 @@ The exercises in this folder guide you through the fundamental concepts needed t
 - **Exercise 4.6 – Scaling charts**  
   Use D3 scales to map data values to positions in a chart.
 
+- **Exercise 4.7: Adding Labels**
+
+
 ## Mercury Link
 https://mercury.swin.edu.au/cos30045/s105960329/Exercise%204/
